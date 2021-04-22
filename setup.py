@@ -23,7 +23,7 @@ def main():
 
     numpy_include = os.getenv('NUMPY_INCLUDE', numpy_include)
     numpy_min_ver = os.getenv('NUMPY_DEP_VERSION', '')
-
+    print("****numpy_include",numpy_include)
     project_name = 'deepspeech'
     if '--project_name' in sys.argv:
         project_name_idx = sys.argv.index('--project_name')
