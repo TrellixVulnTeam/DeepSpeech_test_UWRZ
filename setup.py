@@ -8,6 +8,25 @@ import subprocess
 import sys
 
 def main():
+    install_requires_base = [
+        'absl-py',
+        'attrdict',
+        'bs4',
+        'numpy',
+        'optuna',
+        'opuslib == 2.0.0',
+        'pandas',
+        'progressbar2',
+        'pyogg >= 0.6.14a1',
+        'pyxdg',
+        'resampy >= 0.2.2',
+        'requests',
+        'semver',
+        'six',
+        'sox',
+        'soundfile',
+    ]
+
     try:
         import numpy
         try:
@@ -16,7 +35,7 @@ def main():
             numpy_include = numpy.get_numpy_include()
     except ImportError:
         numpy_include = ''
-        assert 'NUMPY_INCLUDE' in os.environ
+#        assert 'NUMPY_INCLUDE' in os.environ
 
     def read(fname):
         return open(os.path.join(os.path.dirname(__file__), fname)).read()
