@@ -8,25 +8,6 @@ import subprocess
 import sys
 
 def main():
-    install_requires_base = [
-        'absl-py',
-        'attrdict',
-        'bs4',
-        'numpy',
-        'optuna',
-        'opuslib == 2.0.0',
-        'pandas',
-        'progressbar2',
-        'pyogg >= 0.6.14a1',
-        'pyxdg',
-        'resampy >= 0.2.2',
-        'requests',
-        'semver',
-        'six',
-        'sox',
-        'soundfile',
-    ]
-
     try:
         import numpy
         try:
@@ -35,7 +16,7 @@ def main():
             numpy_include = numpy.get_numpy_include()
     except ImportError:
         numpy_include = ''
-#        assert 'NUMPY_INCLUDE' in os.environ
+        assert 'NUMPY_INCLUDE' in os.environ
 
     def read(fname):
         return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -80,7 +61,7 @@ def main():
 
     ds_ext = Extension(name='deepspeech._impl',
                        sources=['impl.i'],
-                       #include_dirs=[numpy_include, '../'],
+                       include_dirs=[numpy_include, '../'],
                        library_dirs=list(map(lambda x: x.strip(), lib_dirs_split(os.getenv('MODEL_LDFLAGS', '')))),
                        libraries=list(map(lambda x: x.strip(), libs_split(os.getenv('MODEL_LIBS', '')))),
                        swig_opts=['-c++', '-keyword'])
