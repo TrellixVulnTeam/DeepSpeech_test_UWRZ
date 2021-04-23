@@ -8,6 +8,8 @@ import subprocess
 import sys
 
 def main():
+    setup_requires=[ 'numpy']
+
     try:
         import numpy
         try:
