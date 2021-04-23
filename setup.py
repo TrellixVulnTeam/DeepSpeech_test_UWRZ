@@ -60,14 +60,14 @@ def main():
             return a.split('.lib')[0:1]
 
         raise AssertionError('os.name == java not expected')
-
+    print("****ds_ext")
     ds_ext = Extension(name='deepspeech._impl',
                        sources=['impl.i'],
                        include_dirs=[numpy_include, '../'],
                        library_dirs=list(map(lambda x: x.strip(), lib_dirs_split(os.getenv('MODEL_LDFLAGS', '')))),
                        libraries=list(map(lambda x: x.strip(), libs_split(os.getenv('MODEL_LIBS', '')))),
                        swig_opts=['-c++', '-keyword'])
-
+    print("***setup")
     setup(name=project_name,
           description='A library for running inference on a DeepSpeech model',
           long_description=read('README.rst'),
