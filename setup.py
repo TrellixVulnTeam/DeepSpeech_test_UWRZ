@@ -17,8 +17,8 @@ def main():
         except AttributeError:
             numpy_include = numpy.get_numpy_include()
     except ImportError:
-        numpy_include = ''
-        assert 'NUMPY_INCLUDE' in os.environ
+        numpy_include = '/usr/lib/python3.8/site-packages/numpy/core/include/numpy/'
+        #assert 'NUMPY_INCLUDE' in os.environ
 
     def read(fname):
         return open(os.path.join(os.path.dirname(__file__), fname)).read()
